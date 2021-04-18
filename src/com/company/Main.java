@@ -2,11 +2,26 @@ package com.company;
 
 import java.util.Scanner;
 
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        // handle exception with try catch
+        getDataPart1();
+
+        // handle a exception by throwing clause to the method declaration
         getDataPart2();
+
+        //example for class not found
+        classNotFoundExceptionExsample();
+
+        // example for clone not support
+        cloneNotSupportedException();
+
+
+
+
 
 
     }
@@ -34,6 +49,8 @@ public class Main {
             }
             catch (Exception ex){
                 System.out.println(ex.toString());
+            }finally {
+                System.out.println("memory release");
             }
         }
     }
@@ -57,6 +74,33 @@ public class Main {
 
         }
     }
+
+    //simple exsample for classnotfoundexception
+    public static void classNotFoundExceptionExsample(){
+        try{
+            Class.forName("com.company.bumindu.database");
+        }catch (ClassNotFoundException cnfe){
+            System.err.println(cnfe.toString());
+        }catch (Exception ex){
+            System.err.println(ex.toString());
+        }
+    }
+
+    //simple exsample for CloneNotSupportedException
+    public static void cloneNotSupportedException(){
+
+        try{
+            MyTeam myTeam1 = new MyTeam("sri lanka");
+            MyTeam myTeam2 = (MyTeam) myTeam1.clone();
+        }catch (CloneNotSupportedException cse){
+            System.err.println(cse.toString());
+        }
+
+
+
+    }
+
+
 
 
 }
